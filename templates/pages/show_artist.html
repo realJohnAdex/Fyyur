@@ -73,6 +73,24 @@
 </section>
 
 <a href="/artists/{{ artist.id }}/edit"><button class="btn btn-primary btn-lg">Edit</button></a>
+<button type="submit" onclick="onDeleteArtist(this)" data-id="{{ artist.id }}" class="btn btn-danger btn-lg">
+	Delete
+</button>
+
+<script>
+	function onDeleteArtist(e) {
+        const artistId = e.dataset['id'];
+        fetch('/artists/' + artistId, {
+            method: 'DELETE'
+        })
+		.then(function () {
+			window.location.href = `/`;
+		})
+		.catch(function (e) {
+			console.log('Error occurred! Unable to DELETE --> ', e)
+		})
+	}
+</script>
 
 {% endblock %}
 

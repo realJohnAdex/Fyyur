@@ -10,7 +10,7 @@ from sqlalchemy.dialects.postgresql import ARRAY
 
 db = SQLAlchemy()
 # TODO: connect to a local postgresql database
-def db_setup(app):
+def create_app(app):
     app.config.from_object('config')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
